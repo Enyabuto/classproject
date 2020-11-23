@@ -30,7 +30,7 @@ class CampsiteInfo extends Component{
                     <div style={{ marginBottom: "20px" }}>
                         {thing.text}
                         <br></br>
-                        {thing.author}{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(thing.date)))}
+                        -- {thing.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(thing.date)))}
                     </div>
                 );
             })}
@@ -43,12 +43,15 @@ class CampsiteInfo extends Component{
 
     render(){
         if(this.props.campsite){
-            return <div className="row">
-                {this.renderCampsite(this.props.campsite)}
-                {this.renderComments(this.props.campsite.comments)}
-            </div>}
-
-
+            return (
+                <div className="container">
+                    <div className="row">
+                        {this.renderCampsite(this.props.campsite)}
+                        {this.renderComments(this.props.campsite.comments)}
+                    </div>
+                </div>
+                );
+            }
             return <div></div>
     }
 };
